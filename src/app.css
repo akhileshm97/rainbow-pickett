@@ -1,0 +1,48 @@
+@import '@fontsource/fira-mono';
+
+body {
+	--font-mono: 'Fira Mono', monospace;
+
+	position: relative;
+	font-family: var(--font-mono);
+	overflow-x: hidden;
+}
+
+#svelte {
+	min-height: 100vh;
+}
+
+h1,
+h2,
+p {
+	font-weight: 400;
+	color: var(--heading-color);
+}
+
+p {
+	line-height: 1.5;
+}
+
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	font-size: 2rem;
+	text-align: center;
+}
+
+button:focus:not(:focus-visible) {
+	outline: none;
+}
+
+@media (min-width: 720px) {
+	h1 {
+		font-size: 2.4rem;
+	}
+}
