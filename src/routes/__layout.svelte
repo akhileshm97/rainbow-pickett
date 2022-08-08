@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Loading from "$lib/misc/Loading.svelte";
+
 	import '../css/modern-css-reset.min.css';
 	import '../css/utilities.css';
 	import '../css/base.css';
@@ -9,3 +11,5 @@
 <main>
 	<slot />
 </main>
+
+<Loading />

@@ -56,7 +56,7 @@
 		<span aria-hidden="true" class="toggler-icon">&#9001;</span>
 	</button>
 
-	<h2>Geometry Toggler</h2>
+	<h2>Field Markers</h2>
 
 	<div class="flow">
 		<div>

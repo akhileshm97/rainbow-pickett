@@ -1,21 +1,20 @@
 <script>
 // @ts-nocheck
 	import { onMount, createEventDispatcher } from 'svelte';
-
 	import { tweened } from 'svelte/motion';
 	import { cubicOut, cubicInOut } from 'svelte/easing';
 	import * as THREE from 'three';
 	import * as SC from 'svelte-cubed';
 
-	import Structure from '$lib/components/Structure.svelte'
+	import Structure from '$lib/components/rainbow-pickett/Structure.svelte'
 	// import CameraControls from '$lib/helpers/CameraControls.svelte'
-	// import Geometries from '$lib/helpers/Geometries.svelte'
+	// import FieldMarkers from '$lib/helpers/FieldMarkers.svelte'
 
 	const dispatch = createEventDispatcher();
 
 	export let current, introFinished
 
-	export const proceed = () => {
+	export const startIntro = () => {
 		setTimeout(() => {
 			camX.set(-70)
 			camY.set(0)
@@ -103,7 +102,10 @@
 	fog={new THREE.FogExp2('papayawhip', 0.005)}
 	shadows
 >
-	<SC.PerspectiveCamera position={[$camX, $camY, $camZ]} target={[$camTargetX, $camTargetY, $camTargetZ]} />
+	<SC.PerspectiveCamera 
+		position={[$camX, $camY, $camZ]} 
+		target={[$camTargetX, $camTargetY, $camTargetZ]} 
+	/>
 <!-- 	<SC.OrbitControls 
 		enableZoom={true} 
 		maxPolarAngle={Math.PI * 0.95} 
@@ -118,6 +120,6 @@
 
 	<Structure rotateY={$rotateY} />
 
-	<!-- <Geometries /> -->
+	<!-- <FieldMarkers /> -->
 	<!-- <CameraControls {camX} {camY} {camZ} open={false} /> -->
 </SC.Canvas>

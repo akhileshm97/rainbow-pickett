@@ -1,11 +1,15 @@
 <script>
 	import { fade } from 'svelte/transition'
+
+	import { loading } from '$lib/stores.js';
 </script>
 
-<div in:fade={{ duration: 50 }} out:fade={{ duration: 50 }}>
-	<!-- {message[status]} -->
-	Loading...
-</div>
+{#if $loading}
+	<div in:fade={{ duration: 50 }} out:fade={{ duration: 50 }}>
+		<!-- {message[status]} -->
+		Loading...
+	</div>
+{/if}
 
 <style>
 	div {

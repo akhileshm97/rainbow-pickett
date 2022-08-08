@@ -1,5 +1,7 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
+	
+	import { loading } from '$lib/stores';
 
 	const dispatch = createEventDispatcher();
 
@@ -9,6 +11,8 @@
 		open = false
 		dispatch('proceed', 'proceeding with site')
 	}
+
+	onMount(() => loading.set(false))
 </script>
 
 <div class='dialog-container' class:closed={!open}>

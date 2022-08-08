@@ -3,13 +3,14 @@
 
 	import { onMount } from 'svelte';
 
-	import Scene from "$lib/Scene.svelte";
-	import Loading from "$lib/Loading.svelte";
-	import Hero from "$lib/components/Hero.svelte";
-	import Section1 from "$lib/components/Section1.svelte";
-	import Section2 from "$lib/components/Section2.svelte";
-	import Section3 from "$lib/components/Section3.svelte";
+	import Hero from "$lib/components/rainbow-pickett/Hero.svelte";
+	import Scene from "$lib/components/rainbow-pickett/Scene.svelte";
+	import Section1 from "$lib/components/rainbow-pickett/Section1.svelte";
+	import Section2 from "$lib/components/rainbow-pickett/Section2.svelte";
+	import Section3 from "$lib/components/rainbow-pickett/Section3.svelte";
 	import Disclaimer from '$lib/components/Disclaimer.svelte';
+
+	import { loading } from '$lib/stores.js';
 
 	const structureMap = {
 		hero: 'overview',
@@ -18,8 +19,7 @@
 		section3: 'structure1'
 	}
 
-	let loading = false
-	let current = 'section1'
+	let current = 'hero'
 	let introFinished = false
 	let structureScene
 
@@ -55,23 +55,19 @@
 <div 
 	class="container"
 	aria-describedby="progress-bar" 
-	aria-hidden={loading ? 'true' : 'false'}
+	aria-hidden={$loading ? 'true' : 'false'}
 > 
 	<div id="structure-scene">
 		<Scene 
 			bind:this={structureScene}
 			{current} 
 			{introFinished}
-			on:mount={() => loading = false} 
+			on:mount={() => $loading.set(false)} 
 			on:introfinished={() => introFinished = true}
 		/>
 	</div>
 
-	{#if loading}
-		<Loading />
-	{/if}
-
-	<Disclaimer on:proceed={structureScene.proceed} />
+	<Disclaimer on:proceed={structureScene.startIntro} />
 
 	<div class="page" class:show={introFinished}>
 		<Hero />
